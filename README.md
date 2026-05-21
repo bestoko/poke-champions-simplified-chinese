@@ -10,13 +10,20 @@
 
 ---
 
-## 🚀 安装步骤
+## 🚀 安装与使用
 
+### 方法一：Greasy Fork 一键安装（推荐 ⭐）
+直接点击下方链接即可跳转并一键安装，最方便快捷，未来版本更新也会自动同步：
+👉 **[Poké Champions 简繁翻译 - Greasy Fork 安装页面](https://greasyfork.org/zh-CN/scripts/579163-pok%C3%A9-champions-%E7%AE%80%E7%B9%81%E7%BF%BB%E8%AF%91)**
+
+---
+
+### 方法二：手动本地安装
 1. 在浏览器中安装 [Tampermonkey](https://www.tampermonkey.net/) 浏览器扩展。
-2. 点击 Tampermonkey 图标，选择 **“添加新脚本”**。
-3. 复制本项目中的 [`script.user.js`](./script.user.js) 文件的全部内容，粘贴到编辑器中。
-4. 按 `Ctrl + S` (或 `Cmd + S`) 保存脚本。
-5. 刷新 [Poké Champions](https://victorpoke-champions.com/zh-TW) 网站即可开始享受流畅的简体中文体验！
+2. 点击扩展图标，选择 **“添加新脚本”**。
+3. 复制本项目中的 [`script.user.js`](./script.user.js) 文件的全部内容并粘贴替换编辑器中的默认模板。
+4. 保存脚本（快捷键 `Ctrl + S` / `Cmd + S`）。
+5. 刷新 [Poké Champions](https://victorpoke-champions.com/zh-TW) 网站即可自动生效。
 
 ---
 
