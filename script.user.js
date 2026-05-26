@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Poké Champions 简繁翻译
 // @namespace    http://tampermonkey.net/
-// @version      1.1
-// @description  将 Poké Champions 网站的繁体中文翻译为简体中文，支持简繁混合搜索，包含全世代宝可梦/招式/特性/道具字典
+// @version      1.2
+// @description  将 Poké Champions 网站的繁体中文翻译为简体中文，支持简繁混合搜索，包含全世代宝可梦/招式/特性/道具字典，并优化简体中文字体排版
 // @author       Antigravity
 // @match        https://victorpoke-champions.com/*
 // @require      https://cdn.jsdelivr.net/npm/opencc-js@1.0.5/dist/umd/full.js
@@ -125,11 +125,28 @@
         }, { capture: true });
     }
 
+    // 注入全局字体优化样式，让简体中文更清晰易读
+    let stylesInjected = false;
+    function injectStyles() {
+        if (stylesInjected) return;
+        const style = document.createElement('style');
+        style.textContent = `
+            body, input, textarea, select, button, [class*="font-"] {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Source Han Sans CN", sans-serif !important;
+            }
+        `;
+        document.documentElement.appendChild(style);
+        stylesInjected = true;
+    }
+
     // 启动入口
     function init() {
         // 仅在属于繁中内容的路由下开启翻译
         const isZhTwPage = location.pathname.startsWith('/zh-TW') || location.pathname === '/';
         if (!isZhTwPage) return;
+
+        // 注入字体优化样式
+        injectStyles();
 
         if (typeof OpenCC === 'undefined') {
             // OpenCC-js 尚未加载完成，等待
